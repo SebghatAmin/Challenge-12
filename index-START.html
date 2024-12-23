@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Key Detection</title>
+    <script type="text/javascript" src="./cornify.js"></script>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <script>
+      const pressed = [];
+      const secretCode = "wesbos";
+
+      // Listen for keyup events
+      window.addEventListener("keyup", (e) => {
+        console.log(`Key pressed: ${e.key}`);
+        pressed.push(e.key);
+
+        // Maintain array length to match the secret code
+        pressed.splice(
+          -secretCode.length - 1,
+          pressed.length - secretCode.length
+        );
+
+        // Check if secret code matches
+        if (pressed.join("").includes(secretCode)) {
+          console.log("DING DING! Secret code entered!");
+          cornify_add(); // Call cornify function
+        }
+
+        // For debugging purposes
+        console.log(`Current keys: ${pressed}`);
+      });
+    </script>
+  </body>
+</html>
